@@ -4,3 +4,5 @@ Chixel is a pixel editing application designed and created in CSCI 448 - Mobile 
 The repository is configured to use Android Studio IDE and the Kotlin programming language. To import the repository:
 * Open Android Studio and go to **File** > **New** > **Project from Version Control** > **Git**
 * Paste the HTTPS URL for the repo in the box, select a directory to hold the project, and continue.
+
+See the [wiki](https://github.com/csm-kb/Chixel/wiki) for roadmap, features, and more details.
