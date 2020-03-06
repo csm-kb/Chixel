@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Chixel</string>
+    <string name="popup_tool_options_heading">Tool Options</string>
+    <string name="popup_tool_otpions_confirm_button">Confirm</string>
 </resources>
