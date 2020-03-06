@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/darkGrey">
+
+    <LinearLayout
+        android:layout_width="320dp"
+        android:layout_height="520dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="100dp"
+        android:background="@color/lightGrey"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.454"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="310dp"
+            android:layout_height="320dp"
+            android:background="@drawable/gradient"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp">
+
+        </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Brightness"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:textSize="20sp">
+        </TextView>
+
+        <androidx.appcompat.widget.AppCompatSeekBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:progressBackgroundTint="#000000"
+            android:progressTint="#000000"
+            android:progress="95">
+        </androidx.appcompat.widget.AppCompatSeekBar>
+        <LinearLayout
+            android:id="@+id/color_gradient_picker_gradient"
+            android:layout_width="match_parent"
+            android:layout_height="60dp">
+            <TextView
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:text="Hex"
+                android:textSize="24sp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="15dp">
+            </TextView>
+            <EditText
+                android:id="@+id/color_gradient_picker_color_edit"
+                android:layout_width="80dp"
+                android:layout_height="35dp"
+                android:text="#0000FF"
+                android:layout_marginTop="15dp"
+                android:backgroundTint="@color/white"
+                android:background="@color/white">
+            </EditText>
+            <Button
+                android:id="@+id/color_gradient_picker_save_color_button"
+                android:layout_width="130dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/confirmbutton"
+                android:text="Save Color"
+                android:textColor="@color/white">
+            </Button>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp">
+        <Button
+            android:id="@+id/color_gradient_picker_colors_button"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="10dp"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/confirmbutton"
+            android:textColor="@color/white"
+            android:text="Colors">
+        </Button>
+        <Button
+            android:id="@+id/color_gradient_picker_confirm_button"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="5dp"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/confirmbutton"
+            android:textColor="@color/white"
+            android:text="Confirm">
+        </Button>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
