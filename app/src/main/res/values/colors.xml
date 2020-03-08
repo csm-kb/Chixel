@@ -9,4 +9,5 @@
     <color name="lightGrey">#c7c7ca</color>
     <color name="c1Placeholder">#00ffff</color>
     <color name="c2Placeholder">#ff00ff</color>
+    <color name="black">#000000</color>
 </resources>
