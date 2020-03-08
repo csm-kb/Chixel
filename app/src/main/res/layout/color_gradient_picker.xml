@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -25,7 +24,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Brightness"
+            android:text="@string/color_editor_brightness"
             android:textColor="@color/darkGrey"
             android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
@@ -46,7 +45,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Hex"
+                android:text="@string/color_editor_hex_label"
                 android:textColor="@color/darkGrey"
                 android:textSize="24sp"
                 android:layout_marginStart="20dp"
@@ -57,11 +56,15 @@
                 android:layout_width="0dp"
                 android:layout_height="36dp"
                 android:layout_weight="10"
-                android:text="#0000FF"
+                tools:text="#0000FF"
                 android:textColor="@color/darkGrey"
                 android:layout_gravity="center"
                 android:backgroundTint="@color/white"
-                android:background="@color/white">
+                android:background="@color/white"
+                android:importantForAutofill="no"
+                android:importantForAccessibility="no"
+                android:inputType="textCapWords"
+                tools:ignore="LabelFor">
             </EditText>
             <Space
                 android:layout_width="0dp"
@@ -74,35 +77,38 @@
                 android:layout_gravity="center"
                 android:layout_marginEnd="20dp"
                 android:background="@drawable/confirmbutton"
-                android:text="Save Color"
+                android:text="@string/color_editor_save_color"
                 android:textColor="@color/white">
             </Button>
         </LinearLayout>
         <LinearLayout
+            style="?android:attr/buttonBarStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp">
             <Button
                 android:id="@+id/color_gradient_picker_colors_button"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="4dp"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@drawable/confirmbutton"
-                android:textColor="@color/white"
-                android:text="Colors" />
+                android:text="@string/color_editor_colors"
+                android:textColor="@color/white" />
             <Button
                 android:id="@+id/color_gradient_picker_confirm_button"
-                android:layout_marginStart="4dp"
-                android:layout_marginEnd="16dp"
+                style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="16dp"
                 android:layout_weight="1"
                 android:background="@drawable/confirmbutton"
-                android:textColor="@color/white"
-                android:text="Confirm"/>
+                android:text="@string/popup_tool_options_confirm_button"
+                android:textColor="@color/white" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

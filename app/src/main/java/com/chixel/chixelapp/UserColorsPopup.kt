@@ -28,10 +28,8 @@ class UserColorsPopup : AppCompatActivity() {
         if (Build.VERSION.SDK_INT in 19..20) {
             setWindowFlag(this, true)
         }
-        if (Build.VERSION.SDK_INT >= 19) {
-            window.decorView.systemUiVisibility =
-                View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-        }
+        window.decorView.systemUiVisibility =
+            View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
         if (Build.VERSION.SDK_INT >= 21) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 // If you want dark status bar, set darkStatusBar to true
