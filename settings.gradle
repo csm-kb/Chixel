@@ -1,2 +1,2 @@
-include ':app'
+include ':chixel'
 rootProject.name='Chixel'
