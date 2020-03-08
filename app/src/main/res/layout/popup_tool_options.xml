@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/tool_options_background_layout"
     android:layout_width="match_parent"
@@ -42,7 +41,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="30dp"
-                    android:text="Option 1"
+                    android:text="@string/option_1_placeholder"
                     android:textColor="@color/black"
                     android:textSize="24sp" />
                 <androidx.appcompat.widget.SwitchCompat
@@ -51,7 +50,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="30dp"
-                    android:text="Option 2"
+                    android:text="@string/option_2_placeholder"
                     android:textColor="@color/black"
                     android:textSize="24sp" />
                 <androidx.appcompat.widget.SwitchCompat
@@ -60,13 +59,13 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="30dp"
-                    android:text="Option 3"
+                    android:text="@string/option_3_placeholder"
                     android:textColor="@color/black"
                     android:textSize="24sp" />
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Option 4"
+                    android:text="@string/option_4_placeholder"
                     android:textColor="@color/black"
                     android:textSize="24sp"
                     android:layout_marginTop="30dp"
@@ -88,7 +87,7 @@
             android:id="@+id/tool_options_confirm_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/popup_tool_otpions_confirm_button"
+            android:text="@string/popup_tool_options_confirm_button"
             android:layout_gravity="center"
             android:layout_marginTop="24dp"
             android:layout_marginHorizontal="32dp"
