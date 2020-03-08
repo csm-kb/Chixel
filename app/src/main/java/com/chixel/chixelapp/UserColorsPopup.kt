@@ -11,7 +11,7 @@ import android.view.WindowManager
 import android.view.animation.DecelerateInterpolator
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.color_gradient_picker.*
+import kotlinx.android.synthetic.main.user_colors_popup.*
 
 class UserColorsPopup : AppCompatActivity() {
     private var darkStatusBar = false
@@ -23,7 +23,6 @@ class UserColorsPopup : AppCompatActivity() {
         overridePendingTransition(0, 0)
         setContentView(R.layout.user_colors_popup)
         supportActionBar?.hide()
-
 
         // Set the Status bar appearance for different API levels
         if (Build.VERSION.SDK_INT in 19..20) {
@@ -45,14 +44,14 @@ class UserColorsPopup : AppCompatActivity() {
             }
         }
 
-        confirmBtn = findViewById<Button>(R.id.color_gradient_picker_confirm_button)
+        confirmBtn = findViewById<Button>(R.id.user_colors_confirm_button)
 
         confirmBtn.setOnClickListener {
             onBackPressed()
         }
 
-        color_picker_background_layout.alpha = 0f
-        color_picker_background_layout.animate()
+        user_colors_background_layout.alpha = 0f
+        user_colors_background_layout.animate()
             .alpha(1f)
             .setDuration(500)
             .setInterpolator(
@@ -61,7 +60,7 @@ class UserColorsPopup : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        color_picker_background_layout.animate()
+        user_colors_background_layout.animate()
             .alpha(0f)
             .setDuration(500)
             .setInterpolator(

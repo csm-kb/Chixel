@@ -3,6 +3,7 @@ package com.chixel.chixelapp
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.app.Activity
+import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
@@ -18,6 +19,7 @@ class ColorPickerPopup : AppCompatActivity() {
     private var darkStatusBar = false
 
     private lateinit var confirmBtn: Button
+    private lateinit var colorsBtn: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,9 +50,15 @@ class ColorPickerPopup : AppCompatActivity() {
         }
 
         confirmBtn = findViewById<Button>(R.id.color_gradient_picker_confirm_button)
+        colorsBtn = findViewById<Button>(R.id.color_gradient_picker_colors_button)
 
         confirmBtn.setOnClickListener {
             onBackPressed()
+        }
+
+        colorsBtn.setOnClickListener {
+            val intent = Intent(this, UserColorsPopup::class.java)
+            startActivity(intent)
         }
 
         color_picker_background_layout.alpha = 0f
