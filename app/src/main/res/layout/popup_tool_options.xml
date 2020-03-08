@@ -6,90 +6,95 @@
     android:id="@+id/tool_options_background_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="40dp"
-    android:background="@color/white"
-    android:orientation="vertical"
+    android:background="#CC000000"
     tools:context=".ToolOptionsPopup">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/popup_tool_options_heading"
-        android:textColor="@color/black"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"/>
-
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
-        <LinearLayout
-            android:id="@+id/tool_options_options_layout"
+        android:layout_height="match_parent"
+        android:layout_margin="40dp"
+        android:orientation="vertical"
+        android:background="@color/white">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/popup_tool_options_heading"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"/>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+            <LinearLayout
+                android:id="@+id/tool_options_options_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginHorizontal="24dp"
+                android:orientation="vertical">
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/tool_options_option1_switch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="30dp"
+                    android:text="Option 1"
+                    android:textColor="@color/black"
+                    android:textSize="24sp" />
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/tool_options_option2_switch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="30dp"
+                    android:text="Option 2"
+                    android:textColor="@color/black"
+                    android:textSize="24sp" />
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/tool_options_option3_switch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="30dp"
+                    android:text="Option 3"
+                    android:textColor="@color/black"
+                    android:textSize="24sp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Option 4"
+                    android:textColor="@color/black"
+                    android:textSize="24sp"
+                    android:layout_marginTop="30dp"
+                    android:layout_gravity="center"/>
+                <androidx.appcompat.widget.AppCompatSeekBar
+                    android:id="@+id/tool_options_option4_seekbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:max="100"
+                    android:progress="50"
+                    android:progressBackgroundTint="#000000"
+                    android:progressTint="#000000"/>
+            </LinearLayout>
+        </ScrollView>
+
+        <Button
+            android:id="@+id/tool_options_confirm_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginHorizontal="24dp"
-            android:orientation="vertical">
-            <androidx.appcompat.widget.SwitchCompat
-                android:id="@+id/tool_options_option1_switch"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="30dp"
-                android:text="Option 1"
-                android:textColor="@color/black"
-                android:textSize="24sp" />
-            <androidx.appcompat.widget.SwitchCompat
-                android:id="@+id/tool_options_option2_switch"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="30dp"
-                android:text="Option 2"
-                android:textColor="@color/black"
-                android:textSize="24sp" />
-            <androidx.appcompat.widget.SwitchCompat
-                android:id="@+id/tool_options_option3_switch"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="30dp"
-                android:text="Option 3"
-                android:textColor="@color/black"
-                android:textSize="24sp" />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Option 4"
-                android:textColor="@color/black"
-                android:textSize="24sp"
-                android:layout_marginTop="30dp"
-                android:layout_gravity="center"/>
-            <androidx.appcompat.widget.AppCompatSeekBar
-                android:id="@+id/tool_options_option4_seekbar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:max="100"
-                android:progress="50"
-                android:progressBackgroundTint="#000000"
-                android:progressTint="#000000"/>
-        </LinearLayout>
-    </ScrollView>
-
-    <Button
-        android:id="@+id/tool_options_confirm_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/popup_tool_otpions_confirm_button"
-        android:layout_gravity="center"
-        android:layout_marginTop="24dp"
-        android:layout_marginHorizontal="32dp"
-        android:layout_marginBottom="32dp"
-        android:background="@drawable/confirmbutton"
-        android:textColor="@color/white"
-        android:textSize="18sp"/>
+            android:text="@string/popup_tool_otpions_confirm_button"
+            android:layout_gravity="center"
+            android:layout_marginTop="24dp"
+            android:layout_marginHorizontal="32dp"
+            android:layout_marginBottom="32dp"
+            android:background="@drawable/confirmbutton"
+            android:textColor="@color/white"
+            android:textSize="18sp"/>
+    </LinearLayout>
 </LinearLayout>

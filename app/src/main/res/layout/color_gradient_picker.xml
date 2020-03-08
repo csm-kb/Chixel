@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/color_picker_background_layout"
+    android:background="#CC000000"
+    tools:context=".ColorPickerPopup">
     <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="40dp"
@@ -20,6 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Brightness"
+            android:textColor="@color/darkGrey"
             android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
             android:textSize="20sp"/>
@@ -40,6 +47,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="Hex"
+                android:textColor="@color/darkGrey"
                 android:textSize="24sp"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="16dp">
@@ -50,6 +58,7 @@
                 android:layout_height="36dp"
                 android:layout_weight="10"
                 android:text="#0000FF"
+                android:textColor="@color/darkGrey"
                 android:layout_gravity="center"
                 android:backgroundTint="@color/white"
                 android:background="@color/white">
@@ -95,6 +104,5 @@
                 android:textColor="@color/white"
                 android:text="Confirm"/>
         </LinearLayout>
-
-
     </LinearLayout>
+</LinearLayout>

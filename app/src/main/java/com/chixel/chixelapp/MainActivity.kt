@@ -25,9 +25,15 @@ class MainActivity : AppCompatActivity() {
         bindViews()
 
         c1Button.setOnLongClickListener {
+            val intent = Intent(this, ColorPickerPopup::class.java)
+            intent.putExtra("whichColorPicker", "one")
+            startActivity(intent)
             true
         }
         c2Button.setOnLongClickListener {
+            val intent = Intent(this, ColorPickerPopup::class.java)
+            intent.putExtra("whichColorPicker", "two")
+            startActivity(intent)
             true
         }
         toolOptionsBtn.setOnClickListener {
