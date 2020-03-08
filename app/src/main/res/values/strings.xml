@@ -1,5 +1,13 @@
 <resources>
     <string name="app_name">Chixel</string>
     <string name="popup_tool_options_heading">Tool Options</string>
-    <string name="popup_tool_otpions_confirm_button">Confirm</string>
+    <string name="popup_tool_options_confirm_button">Confirm</string>
+    <string name="option_1_placeholder">Option 1</string>
+    <string name="option_2_placeholder">Option 2</string>
+    <string name="option_3_placeholder">Option 3</string>
+    <string name="option_4_placeholder">Option 4</string>
+    <string name="color_editor_hex_label">Hex</string>
+    <string name="color_editor_save_color">Save Color</string>
+    <string name="color_editor_colors">Colors</string>
+    <string name="color_editor_brightness">Brightness</string>
 </resources>
