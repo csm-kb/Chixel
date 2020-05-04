@@ -11,4 +11,5 @@
     <string name="color_editor_colors">Colors</string>
     <string name="color_editor_brightness">Brightness</string>
     <string name="main_tools_label">Tools</string>
+    <string name="confirm">Confirm</string>
 </resources>

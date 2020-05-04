@@ -10,13 +10,17 @@ import android.view.View
 import android.view.WindowManager
 import android.view.animation.DecelerateInterpolator
 import android.widget.Button
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.rarepebble.colorpicker.ColorPickerView
 import kotlinx.android.synthetic.main.user_colors_popup.*
 
 class UserColorsPopup : AppCompatActivity() {
     private var darkStatusBar = false
 
     private lateinit var confirmBtn: Button
+    private lateinit var colorPicker : ColorPickerView
+    private var color : Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,9 +48,6 @@ class UserColorsPopup : AppCompatActivity() {
 
         confirmBtn = findViewById<Button>(R.id.user_colors_confirm_button)
 
-        confirmBtn.setOnClickListener {
-            onBackPressed()
-        }
 
         user_colors_background_layout.alpha = 0f
         user_colors_background_layout.animate()
@@ -55,6 +56,16 @@ class UserColorsPopup : AppCompatActivity() {
             .setInterpolator(
                 DecelerateInterpolator()
             ).start()
+
+        colorPicker = findViewById<ColorPickerView>(R.id.color_picker_view)
+        colorPicker.setColor(-65536)
+
+
+        confirmBtn.setOnClickListener {
+            color = colorPicker.color
+            onBackPressed()
+        }
+
     }
 
     override fun onBackPressed() {
