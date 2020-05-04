@@ -20,7 +20,7 @@
             android:id="@+id/toolsLabelTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Tools"
+            android:text="@string/main_tools_label"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textAlignment="center"
@@ -46,19 +46,19 @@
             android:background="@android:color/transparent"
             app:srcCompat="@drawable/ic_tool_erase" />
 
-        <ImageButton
+        <!--ImageButton
             android:id="@+id/toolFillButton"
             android:layout_width="48dp"
             android:layout_height="match_parent"
             android:background="@android:color/transparent"
-            app:srcCompat="@drawable/ic_tool_fill" />
+            app:srcCompat="@drawable/ic_tool_fill" /-->
 
-        <ImageButton
+        <!--ImageButton
             android:id="@+id/toolEyedropButton"
             android:layout_width="48dp"
             android:layout_height="match_parent"
             android:background="@android:color/transparent"
-            app:srcCompat="@drawable/ic_tool_eyedrop" />
+            app:srcCompat="@drawable/ic_tool_eyedrop" /-->
 
     </LinearLayout>
 
@@ -77,6 +77,20 @@
             android:layout_weight="1" />
 
         <ImageButton
+            android:id="@+id/toolUndoButton"
+            android:layout_width="48dp"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            app:srcCompat="@drawable/ic_tool_undo" />
+
+        <ImageButton
+            android:id="@+id/toolRedoButton"
+            android:layout_width="48dp"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            app:srcCompat="@drawable/ic_tool_redo" />
+
+        <ImageButton
             android:id="@+id/toolSaveButton"
             android:layout_width="48dp"
             android:layout_height="match_parent"
@@ -86,7 +100,8 @@
     </LinearLayout>
 
     <com.chixel.chixelapp.canvas.PixelCanvasView
-        android:id="@+id/canvasView"
+        android:id="@+id/drawView"
+        android:background="@android:color/white"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout3"

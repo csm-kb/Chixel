@@ -48,7 +48,7 @@ class ToolOptionsPopup : AppCompatActivity() {
             }
         }
 
-        confirmBtn = findViewById<Button>(R.id.tool_options_confirm_button)
+        confirmBtn = findViewById(R.id.tool_options_confirm_button)
 
         confirmBtn.setOnClickListener {
             onBackPressed()
