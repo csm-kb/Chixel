@@ -40,4 +40,5 @@ dependencies {
 
     implementation 'com.rarepebble:colorpicker:3.0.1'
     implementation 'com.github.divyanshub024:AndroidDraw:v0.1'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
 }
