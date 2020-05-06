@@ -8,9 +8,8 @@ import com.chixel.chixelapp.database.ImageData
 import com.chixel.chixelapp.database.ImageDataRepository
 import java.util.*
 
-class ColorPickerPopupViewModel(private val imageDataRepository: ImageDataRepository): ViewModel() {
+class MainActivityViewModel(private val imageDataRepository: ImageDataRepository): ViewModel() {
     val allColorLiveData = imageDataRepository.getColors()
-    val imageListLiveData  = imageDataRepository.getAllImages()
     //val allColorOneData = imageDataRepository.getColorOne()
     private val colorIdLiveData = MutableLiveData<UUID>()
     var singleColorLiveData : LiveData<ImageData?> =

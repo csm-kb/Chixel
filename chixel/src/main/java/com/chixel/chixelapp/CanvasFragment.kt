@@ -3,20 +3,43 @@ package com.chixel.chixelapp
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
-import android.media.Image
-import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.transition.Slide
-import android.view.Gravity
 import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.view.Window
-import android.widget.*
+import android.widget.Button
+import android.widget.ImageButton
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.chixel.chixelapp.canvas.PixelCanvasView
 import com.chixel.chixelapp.canvas.ToolEnum
 import com.chixel.chixelapp.database.ImageData
+import java.util.*
 
-class MainActivity : AppCompatActivity(), CanvasFragment.CanvasCallback, ImageRecyclerView.ImageRecyclerViewCallback {
+private const val ARG_IMAGE_NAME = "pictureName"
+
+
+class CanvasFragment: Fragment() {
+
+    interface CanvasCallback {
+        fun toolSavedImagesCallback()
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        callbacks = context as CanvasCallback?
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        callbacks = null
+    }
+
+    private lateinit var imageViewModel : ColorPickerPopupViewModel
+    private var imageName : String? = ""
+    private var callbacks: CanvasCallback? = null
+
 
     private lateinit var c1Button: ImageButton
     private lateinit var c2Button: ImageButton
@@ -34,27 +57,54 @@ class MainActivity : AppCompatActivity(), CanvasFragment.CanvasCallback, ImageRe
 
     private var currentTool: ToolEnum = ToolEnum.BRUSH
 
+    companion object {
+        fun newInstance(pictureName: String?): CanvasFragment {
+            val args = Bundle().apply {
+                putSerializable(ARG_IMAGE_NAME, pictureName)
+            }
+            return CanvasFragment().apply {
+                arguments = args
+            }
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        requestWindowFeature(Window.FEATURE_NO_TITLE)
-        setContentView(R.layout.activity_main)
-        supportActionBar?.hide()
-        bindViews()
+        val factory = ColorPickerPopupModelFactory(requireContext())
+        imageViewModel = ViewModelProvider(this, factory).get(ColorPickerPopupViewModel::class.java)
+        imageName = arguments?.getSerializable(ARG_IMAGE_NAME) as String?
+    }
 
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val view = inflater.inflate(R.layout.activity_main, container, false)
+        c1Button = view.findViewById(R.id.color_one_select_button)
+        c2Button = view.findViewById(R.id.color_two_select_button)
+        toolOptionsBtn = view.findViewById(R.id.tool_options_open_button)
+        drawView = view.findViewById(R.id.drawView)
+        toolBrushBtn = view.findViewById(R.id.toolBrushButton)
+        toolEraseBtn = view.findViewById(R.id.toolEraseButton)
+        toolUndoBtn = view.findViewById(R.id.toolUndoButton)
+        toolRedoBtn = view.findViewById(R.id.toolRedoButton)
+        toolSavedImagesBtn = view.findViewById(R.id.toolSavedImagesButton)
+        toolSaveBtn = view.findViewById(R.id.toolSaveButton)
         c1Button.setOnLongClickListener {
-            val intent = Intent(this, ColorPickerPopup::class.java)
+            val intent = Intent(requireContext(), ColorPickerPopup::class.java)
             intent.putExtra("whichColorPicker", "one")
             startActivity(intent)
             true
         }
         c2Button.setOnLongClickListener {
-            val intent = Intent(this, ColorPickerPopup::class.java)
+            val intent = Intent(requireContext(), ColorPickerPopup::class.java)
             intent.putExtra("whichColorPicker", "two")
             startActivity(intent)
             true
         }
         toolOptionsBtn.setOnClickListener {
-            val intent = Intent(this, ToolOptionsPopup::class.java)
+            val intent = Intent(requireContext(), ToolOptionsPopup::class.java)
             startActivity(intent)
         }
 
@@ -81,17 +131,14 @@ class MainActivity : AppCompatActivity(), CanvasFragment.CanvasCallback, ImageRe
             drawView.redo()
         }
         toolSavedImagesBtn.setOnClickListener {
-            val currentFragment = supportFragmentManager.findFragmentById(R.id.recycler_container)
-            if (currentFragment == null) {
-                // val fragment = createFragment()
-                val fragment = ImageRecyclerView()
-                supportFragmentManager
-                    .beginTransaction()
-                    .add(R.id.screen_container, fragment)
-                    .commit()
-
-            }
+            callbacks?.toolSavedImagesCallback()
         }
+        updateUI(emptyList())
+        return view
+    }
+
+    fun updateUI(images: List<ImageData>) {
+
     }
 
     private val toolSelColor: Int = Color.parseColor("#ff00aae0")
@@ -106,35 +153,5 @@ class MainActivity : AppCompatActivity(), CanvasFragment.CanvasCallback, ImageRe
                 toolEraseBtn.setBackgroundColor(toolSelColor)
             }
         }
-    }
-
-    private fun bindViews() {
-        c1Button = findViewById(R.id.color_one_select_button)
-        c2Button = findViewById(R.id.color_two_select_button)
-        toolOptionsBtn = findViewById(R.id.tool_options_open_button)
-        drawView = findViewById(R.id.drawView)
-        toolBrushBtn = findViewById(R.id.toolBrushButton)
-        toolEraseBtn = findViewById(R.id.toolEraseButton)
-        toolUndoBtn = findViewById(R.id.toolUndoButton)
-        toolRedoBtn = findViewById(R.id.toolRedoButton)
-        toolSavedImagesBtn = findViewById(R.id.toolSavedImagesButton)
-        toolSaveBtn = findViewById(R.id.toolSaveButton)
-    }
-
-    override fun toolSavedImagesCallback() {
-            // val fragment = createFragment()
-            val fragment = ImageRecyclerView()
-            supportFragmentManager
-                .beginTransaction()
-                .replace(R.id.screen_container, fragment)
-                .commit()
-    }
-
-    override fun callCanvasFragment(pictureName: String?) {
-        val fragment = CanvasFragment.newInstance(pictureName)
-        supportFragmentManager
-            .beginTransaction()
-            .add(R.id.recycler_container, fragment)
-            .commit()
     }
 }

@@ -7,7 +7,7 @@ import java.util.*
 @Dao
 interface ImageDataDao {
     @Query("SELECT * FROM ImageData")
-    fun getMultipleImageData(): LiveData<List<ImageData>>
+    fun getAllImages(): LiveData<List<ImageData>>
     @Query("SELECT * FROM ImageData where id=(:id)")
     fun getSingleImageData(id: UUID): LiveData<ImageData?>
     @Update

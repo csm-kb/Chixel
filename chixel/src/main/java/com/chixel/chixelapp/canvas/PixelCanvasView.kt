@@ -2,6 +2,7 @@ package com.chixel.chixelapp.canvas
 
 import android.content.Context
 import android.graphics.*
+import android.graphics.drawable.BitmapDrawable
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
@@ -103,6 +104,10 @@ class PixelCanvasView @JvmOverloads constructor(
         draw(canvas)
         mIsSaving = false
         return bitmap
+    }
+
+    fun setBitmap(bitmap: Bitmap) {
+        this.background = BitmapDrawable(resources, bitmap)
     }
 
     fun addPath(path: MyPath, options: PaintOptions) {

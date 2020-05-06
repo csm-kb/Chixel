@@ -22,6 +22,7 @@
         <activity android:name=".ToolOptionsPopup"  android:theme="@style/Theme.Transparent" />
         <activity android:name=".ColorPickerPopup"  android:theme="@style/Theme.Transparent" />
         <activity android:name=".UserColorsPopup"   android:theme="@style/Theme.Transparent" />
+        <!--<activity android:name=".ImageRecyclerView" android:theme="@style/Theme.Transparent" /> -->
     </application>
 
 </manifest>

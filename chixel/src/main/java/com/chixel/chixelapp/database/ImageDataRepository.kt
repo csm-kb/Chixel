@@ -10,6 +10,7 @@ class ImageDataRepository(private val imageDataDao: ImageDataDao) {
 
     fun getColors() : LiveData<List<ImageData>> = imageDataDao.getColors()
     //fun getColorOne() : LiveData<List<ImageData>> = imageDataDao.getColorOne()
+    fun getAllImages() : LiveData<List<ImageData>> = imageDataDao.getAllImages()
     fun getSingleColor(id: UUID): LiveData<ImageData?> = imageDataDao.getSingleImageData(id)
     private val executor = Executors.newSingleThreadExecutor()
 
