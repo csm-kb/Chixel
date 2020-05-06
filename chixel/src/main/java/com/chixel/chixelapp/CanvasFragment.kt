@@ -80,7 +80,7 @@ class CanvasFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.activity_main, container, false)
+        val view = inflater.inflate(R.layout.recycler_saved_files, container, false)
         c1Button = view.findViewById(R.id.color_one_select_button)
         c2Button = view.findViewById(R.id.color_two_select_button)
         toolOptionsBtn = view.findViewById(R.id.tool_options_open_button)

@@ -66,7 +66,7 @@ class ImageRecyclerView : Fragment() {
 
     fun updateUI(images: List<ImageData>) {
         adapter = ImageAdapter(images) { image: ImageData ->
-            callback?.callCanvasFragment(image.pictureName)
+           callback?.callCanvasFragment(image.pictureName)
         }
 
         imageListRecyclerView.adapter = adapter

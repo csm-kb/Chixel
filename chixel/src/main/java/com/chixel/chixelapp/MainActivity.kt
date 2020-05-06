@@ -134,7 +134,7 @@ class MainActivity : AppCompatActivity(), CanvasFragment.CanvasCallback, ImageRe
         val fragment = CanvasFragment.newInstance(pictureName)
         supportFragmentManager
             .beginTransaction()
-            .add(R.id.recycler_container, fragment)
+            .replace(R.id.screen_container, fragment)
             .commit()
     }
 }

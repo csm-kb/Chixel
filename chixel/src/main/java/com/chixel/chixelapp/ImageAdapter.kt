@@ -21,7 +21,7 @@ class ImageAdapter(private val images: List<ImageData>, private val clickListene
         val image = images[position]
         holder.bind(image, clickListener)
         holder.apply {
-            imageNameTextView.text = image.pictureName
+            imageNameTextView.text = image.colorOne
             imageDate.text = image.date.toString()
         }
     }
