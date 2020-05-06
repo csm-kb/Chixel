@@ -8,7 +8,7 @@ apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 29
-    buildToolsVersion "29.0.2"
+    buildToolsVersion "29.0.3"
     defaultConfig {
         applicationId "com.chixel.chixelapp"
         minSdkVersion 21
@@ -37,5 +37,8 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
+
+    implementation 'com.rarepebble:colorpicker:3.0.1'
     implementation 'com.github.divyanshub024:AndroidDraw:v0.1'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
 }

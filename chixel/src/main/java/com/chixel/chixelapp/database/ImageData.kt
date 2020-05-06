@@ -7,7 +7,7 @@ import java.util.*;
 
 @Entity
 data class ImageData(@PrimaryKey val id :UUID = UUID.randomUUID(),
-                     var pictureName: String = "",
-                     @ColorInt var colorOne: Int = 0,
-                     @ColorInt var colorTwo: Int = 0,
-                     var date: Date = Date())
+                     var pictureName: String? = "",
+                     var colorOne: String? = "",
+                     var colorTwo: String? = "",
+                     var date: Date? = Date())
