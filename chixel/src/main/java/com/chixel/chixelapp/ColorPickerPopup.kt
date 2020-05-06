@@ -12,6 +12,7 @@ import android.view.WindowManager
 import android.view.animation.DecelerateInterpolator
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import com.rarepebble.colorpicker.ColorPickerView
 import kotlinx.android.synthetic.main.color_gradient_picker.*
 import kotlinx.android.synthetic.main.popup_tool_options.*
 
@@ -20,6 +21,8 @@ class ColorPickerPopup : AppCompatActivity() {
 
     private lateinit var confirmBtn: Button
     private lateinit var colorsBtn: Button
+    private lateinit var colorPicker : ColorPickerView
+    private var color : Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,8 +52,11 @@ class ColorPickerPopup : AppCompatActivity() {
 
         confirmBtn = findViewById<Button>(R.id.color_gradient_picker_confirm_button)
         colorsBtn = findViewById<Button>(R.id.color_gradient_picker_colors_button)
+        colorPicker = findViewById<ColorPickerView>(R.id.color_picker_view)
+        colorPicker.setColor(-65536)
 
         confirmBtn.setOnClickListener {
+            color = colorPicker.color
             onBackPressed()
         }
 

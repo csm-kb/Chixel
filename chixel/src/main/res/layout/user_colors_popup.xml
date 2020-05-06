@@ -29,13 +29,6 @@
 
         </ScrollView>
 
-        <com.rarepebble.colorpicker.ColorPickerView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/color_picker_view"
-            app:colorpicker_showAlpha="true"
-            app:colorpicker_showHex="true"
-            app:colorpicker_showPreview="true"/>
 
         <Button
             android:id="@+id/user_colors_confirm_button"

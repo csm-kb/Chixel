@@ -19,8 +19,6 @@ class UserColorsPopup : AppCompatActivity() {
     private var darkStatusBar = false
 
     private lateinit var confirmBtn: Button
-    private lateinit var colorPicker : ColorPickerView
-    private var color : Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,12 +55,8 @@ class UserColorsPopup : AppCompatActivity() {
                 DecelerateInterpolator()
             ).start()
 
-        colorPicker = findViewById<ColorPickerView>(R.id.color_picker_view)
-        colorPicker.setColor(-65536)
-
 
         confirmBtn.setOnClickListener {
-            color = colorPicker.color
             onBackPressed()
         }
 
