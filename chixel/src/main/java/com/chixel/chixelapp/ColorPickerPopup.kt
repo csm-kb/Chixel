@@ -20,6 +20,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.chixel.chixelapp.database.ImageData
 import com.chixel.chixelapp.database.ImageDataRepository
 import com.rarepebble.colorpicker.ColorPickerView
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.color_gradient_picker.*
 import kotlinx.android.synthetic.main.popup_tool_options.*
 import java.util.*
@@ -44,6 +45,8 @@ class ColorPickerPopup : AppCompatActivity() {
         overridePendingTransition(0, 0)
         setContentView(R.layout.color_gradient_picker)
         supportActionBar?.hide()
+
+
 
         val whichPicker = intent.getStringArrayExtra("whichColorPicker")
 
@@ -70,11 +73,27 @@ class ColorPickerPopup : AppCompatActivity() {
         colorPicker = findViewById<ColorPickerView>(R.id.color_picker_view)
         colorPicker.setColor(-65536)
 
+        var savedBitmapData : ByteArray? = null
+        val extras = intent.extras
+        if (extras != null) {
+            savedBitmapData = extras.getByteArray("saved_bitmap")
+            //The key argument here must match that used in the other activity
+        }
+
         confirmBtn.setOnClickListener {
             color = colorPicker.color
             //Toast.makeText(this, "ColorInt code is: " + color, Toast.LENGTH_SHORT).show()
             //hexString = String.format("#%08X", 0xFFFFFF, color)
-            hexString = Integer.toHexString(color)
+            hexString = "#" + Integer.toHexString(color)
+
+            //colorPicker.setColor(color)
+            val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra("Current_color", color)
+            intent.putExtra("returnSavedBitmap", savedBitmapData)
+            startActivity(intent)
+
+            colorPicker.setCurrentColor(color)
+
             val tempColorPicker = ImageData()
             tempColorPicker.colorOne = hexString
             tempColorPicker.date = Date()

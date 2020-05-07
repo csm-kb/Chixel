@@ -1,20 +1,23 @@
 package com.chixel.chixelapp
 
-import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.graphics.Color
-import android.media.Image
-import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.transition.Slide
-import android.view.Gravity
-import android.view.LayoutInflater
+import android.util.Base64
 import android.view.Window
-import android.widget.*
+import android.widget.Button
+import android.widget.ImageButton
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.chixel.chixelapp.canvas.PixelCanvasView
 import com.chixel.chixelapp.canvas.ToolEnum
-import com.chixel.chixelapp.database.ImageData
+import com.chixel.chixelapp.database.CanvasBitmapData
+import java.io.ByteArrayOutputStream
+import java.util.*
 
 class MainActivity : AppCompatActivity(), CanvasFragment.CanvasCallback, ImageRecyclerView.ImageRecyclerViewCallback {
 
@@ -34,16 +37,38 @@ class MainActivity : AppCompatActivity(), CanvasFragment.CanvasCallback, ImageRe
 
     private var currentTool: ToolEnum = ToolEnum.BRUSH
 
+    private lateinit var mainActivityViewModel: MainActivityViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         requestWindowFeature(Window.FEATURE_NO_TITLE)
         setContentView(R.layout.activity_main)
         supportActionBar?.hide()
         bindViews()
+        var newBitmap : Bitmap? = null
+        val extras = intent.extras
+        if (extras != null) {
+            val value = extras.getInt("Current_color")
+            drawView.setColor(value)
+            val newByteArray : ByteArray? = extras.getByteArray("returnSavedBitmap")
+            if (newByteArray != null) {
+                newBitmap = BitmapFactory.decodeByteArray(newByteArray, 0, newByteArray.size)
+            }
+            if (newBitmap != null) {
+                drawView.setBitmap(newBitmap)
+            }
+
+            //The key argument here must match that used in the other activity
+        }
 
         c1Button.setOnLongClickListener {
             val intent = Intent(this, ColorPickerPopup::class.java)
             intent.putExtra("whichColorPicker", "one")
+            var stream : ByteArrayOutputStream = ByteArrayOutputStream()
+            var bitmap : Bitmap = drawView.getBitmap()
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream)
+            var byteArray : ByteArray = stream.toByteArray()
+            intent.putExtra("saved_bitmap", byteArray)
             startActivity(intent)
             true
         }
@@ -80,17 +105,40 @@ class MainActivity : AppCompatActivity(), CanvasFragment.CanvasCallback, ImageRe
         toolRedoBtn.setOnClickListener {
             drawView.redo()
         }
-        toolSavedImagesBtn.setOnClickListener {
-            val currentFragment = supportFragmentManager.findFragmentById(R.id.recycler_container)
-            if (currentFragment == null) {
-                // val fragment = createFragment()
-                val fragment = ImageRecyclerView()
-                supportFragmentManager
-                    .beginTransaction()
-                    .add(R.id.screen_container, fragment)
-                    .commit()
 
+
+        toolSavedImagesBtn.setOnClickListener {
+            val factory = MainActivityViewModelFactory(this)
+            mainActivityViewModel = ViewModelProvider(this, factory).get(MainActivityViewModel::class.java)
+            Toast.makeText(this, "Retrieve button pressed", Toast.LENGTH_SHORT).show()
+            var savedBitmapArray : String = ""
+            savedBitmapArray = mainActivityViewModel.savedBitmapDB
+
+            var newByteArray : ByteArray = Base64.decode(savedBitmapArray, Base64.DEFAULT)
+
+            var newSavedBitmap : Bitmap? = null
+            Toast.makeText(this, "ByteArray data not null", Toast.LENGTH_SHORT).show()
+            newSavedBitmap = BitmapFactory.decodeByteArray(newByteArray, 0, newByteArray.size)
+            if (newSavedBitmap != null) {
+                Toast.makeText(this, "Bitmap data not null", Toast.LENGTH_SHORT).show()
+                drawView.clearCanvas()
+                drawView.setBitmap(newSavedBitmap)
             }
+        }
+
+
+        toolSaveBtn.setOnClickListener {
+            val factory = MainActivityViewModelFactory(this)
+            mainActivityViewModel = ViewModelProvider(this, factory).get(MainActivityViewModel::class.java)
+            Toast.makeText(this, "Save button pressed", Toast.LENGTH_SHORT).show()
+            var stream : ByteArrayOutputStream = ByteArrayOutputStream()
+            var bitmap : Bitmap = drawView.getBitmap()
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream)
+            var byteArray : ByteArray = stream.toByteArray()
+            var byteString : String = Base64.encodeToString(byteArray, Base64.DEFAULT)
+            var tempCanvasBitmapData = CanvasBitmapData()
+            tempCanvasBitmapData.bitmapData = byteString
+            mainActivityViewModel.addBitmapToDB(tempCanvasBitmapData)
         }
     }
 

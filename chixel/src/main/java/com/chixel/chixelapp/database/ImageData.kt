@@ -13,7 +13,10 @@ data class ImageData(@PrimaryKey val id :UUID = UUID.randomUUID(),
                      var colorTwo: String? = "",
                      var date: Date? = Date())
 
-class ImageBitmapData {
-    @Relation(parentColumn = "id", entityColumn = "pictureName")
-    var id : String? = ""
-}
+@Entity
+data class CanvasBitmapData(@PrimaryKey var bitmapData : String = "")
+
+//class ImageBitmapData {
+//    @Relation(parentColumn = "id", entityColumn = "pictureName")
+//    var id : String? = ""
+//}

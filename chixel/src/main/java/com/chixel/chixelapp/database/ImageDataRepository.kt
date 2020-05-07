@@ -12,11 +12,18 @@ class ImageDataRepository(private val imageDataDao: ImageDataDao) {
     //fun getColorOne() : LiveData<List<ImageData>> = imageDataDao.getColorOne()
     fun getAllImages() : LiveData<List<ImageData>> = imageDataDao.getAllImages()
     fun getSingleColor(id: UUID): LiveData<ImageData?> = imageDataDao.getSingleImageData(id)
+    fun getSavedBitmapDB() : String = imageDataDao.getSavedBitmapDB()
     private val executor = Executors.newSingleThreadExecutor()
 
     fun addSingleImageData(imageData: ImageData) {
         executor.execute {
             imageDataDao.addSingleImageData(imageData)
+        }
+    }
+
+    fun addBitmapToDb(canvasBitmapData: CanvasBitmapData) {
+        executor.execute {
+            imageDataDao.addBitmapToDB(canvasBitmapData)
         }
     }
 

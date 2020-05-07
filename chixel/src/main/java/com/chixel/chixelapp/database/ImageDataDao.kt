@@ -1,5 +1,6 @@
 package com.chixel.chixelapp.database
 
+import android.graphics.Bitmap
 import androidx.lifecycle.LiveData
 import androidx.room.*
 import java.util.*
@@ -20,5 +21,10 @@ interface ImageDataDao {
     fun getColors(): LiveData<List<ImageData>>
     //@Query("SELECT colorOne FROM ImageData")
     //fun getColorOne(): LiveData<List<ImageData>>
+    @Query("SELECT bitmapData FROM CanvasBitmapData")
+    fun getSavedBitmapDB() : String
+
+    @Insert
+    fun addBitmapToDB(canvasBitmapData: CanvasBitmapData)
 
 }

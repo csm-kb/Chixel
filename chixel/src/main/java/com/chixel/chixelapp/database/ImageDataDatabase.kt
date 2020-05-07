@@ -9,7 +9,7 @@ import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 
 private const val dbName = "ImageData-database"
-@Database(entities = [ImageData::class], version = 2)
+@Database(entities = [ImageData::class, CanvasBitmapData::class], version = 2)
 @TypeConverters(ImageDataConverter::class)
 abstract class ImageDataDatabase : RoomDatabase(){
     abstract  fun imageDataDao() : ImageDataDao
@@ -23,7 +23,7 @@ abstract class ImageDataDatabase : RoomDatabase(){
 //        }
         fun getInstance(context: Context): ImageDataDatabase{
             return instance?:let {
-                instance?:Room.databaseBuilder(context, ImageDataDatabase::class.java, dbName).build()
+                instance?:Room.databaseBuilder(context, ImageDataDatabase::class.java, dbName).allowMainThreadQueries().build()
             }
         }
     }
